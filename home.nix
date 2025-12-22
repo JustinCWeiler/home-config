@@ -46,6 +46,7 @@
 			protonvpn-gui
 			vlc
 			spotify
+			xev
 
 			haskellPackages.cabal-install
 			haskellPackages.ghc
@@ -212,6 +213,13 @@
 				"${modifier}+shift+alt+${down}"  = "move workspace to down";
 				"${modifier}+shift+alt+${left}"  = "move workspace to left";
 				"${modifier}+shift+alt+${right}" = "move workspace to right";
+
+				"XF86AudioMute"        = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+				"XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+				"XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+
+				"XF86MonBrightnessUp"   = "exec brightnessctl set 5%+";
+				"XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
 			};
 
 			bindswitches = let laptop = "eDP-1"; in {
