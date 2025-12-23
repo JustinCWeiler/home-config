@@ -268,6 +268,9 @@
 					tap_button_map = "lrm";
 					click_method = "clickfinger";
 					clickfinger_button_map = "lrm";
+					accel_profile = "flat";
+					pointer_accel = "0.25";
+					dwt = "false";
 				};
 			};
 
