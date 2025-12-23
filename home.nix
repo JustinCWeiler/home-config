@@ -45,7 +45,7 @@
 			qbittorrent
 			protonvpn-gui
 			vlc
-			spotify
+			#spotify
 			xev
 
 			haskellPackages.cabal-install
@@ -93,6 +93,17 @@
 		firefox.enable = true;
 		kitty.enable = true;
 		spotify-player.enable = true;
+
+		git = {
+			enable = true;
+
+			settings = {
+				user = {
+					email = "justincweiler@gmail.com";
+					name = "Justin W";
+				};
+			};
+		};
 
 		zsh = {
 			enable = true;
@@ -265,6 +276,14 @@
 				"Sharp Corporation 0x14B9 Unknown" = {
 					mode = "3840x2160@59.997Hz";
 					scale = "2";
+					scale_filter = "nearest";
+					pos = "0 0";
+				};
+
+				# framework 16 laptop monitor (root screen)
+				"BOE NE160QDM-NZ6 Unknown" = {
+					mode = "2560x1600@165.000Hz";
+					scale = "1.5";
 					scale_filter = "nearest";
 					pos = "0 0";
 				};
