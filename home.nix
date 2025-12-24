@@ -91,8 +91,11 @@
 
 	programs = {
 		firefox.enable = true;
-		kitty.enable = true;
 		spotify-player.enable = true;
+
+		foot = {
+			enable = true;
+		};
 
 		git = {
 			enable = true;
@@ -205,6 +208,10 @@
 	};
 
 	wayland.windowManager.sway = {
+		extraOptions = [
+			"--unsupported-gpu"
+		];
+
 		enable = true;
 		config = rec {
 			modifier = "Mod4";
@@ -213,7 +220,7 @@
 			left  = "h";
 			right = "l";
 
-			terminal = "kitty";
+			terminal = "foot";
 			defaultWorkspace = "workspace number 1";
 
 			keybindings = lib.mkOptionDefault {
