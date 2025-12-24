@@ -258,7 +258,7 @@
 			};
 
 			startup = [
-				{ command = "protonvpn-gui"; }
+				{ command = "protonvpn-app"; }
 			];
 
 			assigns = {
@@ -282,16 +282,16 @@
 			};
 
 			output = {
-				# xps 15 laptop monitor (root screen)
-				"Sharp Corporation 0x14B9 Unknown" = {
-					mode = "3840x2160@59.997Hz";
-					scale = "2";
-					scale_filter = "nearest";
-					pos = "0 0";
-				};
+				## xps 15 laptop monitor (root screen)
+				#"eDP-1" = {
+				#	mode = "3840x2160@59.997Hz";
+				#	scale = "2";
+				#	scale_filter = "nearest";
+				#	pos = "0 0";
+				#};
 
 				# framework 16 laptop monitor (root screen)
-				"BOE NE160QDM-NZ6 Unknown" = {
+				"eDP-1" = {
 					mode = "2560x1600@165.000Hz";
 					scale = "1.5";
 					scale_filter = "nearest";
