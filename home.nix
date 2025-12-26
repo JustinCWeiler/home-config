@@ -208,11 +208,12 @@
 	};
 
 	wayland.windowManager.sway = {
+		enable = true;
+
 		extraOptions = [
 			"--unsupported-gpu"
 		];
 
-		enable = true;
 		config = rec {
 			modifier = "Mod4";
 			up    = "k";
