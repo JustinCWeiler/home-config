@@ -68,7 +68,7 @@
 			#	org.gradle.daemon.idletimeout=3600000
 			#'';
 
-			".nix".source = config.lib.file.mkOutOfStoreSymlink "${homeDirectory}/.config/home-manager/home.nix";
+			".nix".source = config.lib.file.mkOutOfStoreSymlink "${homeDirectory}/.config/home-manager/";
 		};
 
 		# Home Manager can also manage your environment variables through
