@@ -92,6 +92,7 @@
 	programs = {
 		firefox.enable = true;
 		spotify-player.enable = true;
+		feh.enable = true;
 
 		foot = {
 			enable = true;
@@ -118,6 +119,7 @@
 				gits = "git status";
 				gitl = "git log --oneline";
 				gitd = "git diff";
+				feh = "feh -.";
 			};
 
 			localVariables = {
