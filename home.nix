@@ -295,7 +295,7 @@
 				"eDP-1" = {
 					mode = "2560x1600@165.000Hz";
 					scale = "1.5";
-					scale_filter = "nearest";
+					scale_filter = "smart";
 					pos = "0 0";
 				};
 
@@ -303,8 +303,8 @@
 				"VIZIO, Inc D39h-D0 LAUAUIAR00000" = {
 					mode = "1920x1080@60.000Hz";
 					scale = "1.5";
-					scale_filter = "nearest";
-					pos = "320 -720";
+					scale_filter = "smart";
+					pos = "213 -720";
 				};
 			};
 		};
