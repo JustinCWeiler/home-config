@@ -89,7 +89,18 @@
 		#
 	};
 
-	programs = {
+	programs =
+	let
+		aliases = {
+			ls = "ls --color=tty";
+			psa = "ps -ef";
+			gits = "git status";
+			gitl = "git log --oneline";
+			gitd = "git diff";
+			feh = "feh -.";
+		};
+	in {
+		home-manager.enable = true;
 		firefox.enable = true;
 		spotify-player.enable = true;
 		feh.enable = true;
@@ -113,14 +124,7 @@
 			enable = true;
 			#zprof.enable = true;
 
-			shellAliases = {
-				ls = "ls --color=tty";
-				psa = "ps -ef";
-				gits = "git status";
-				gitl = "git log --oneline";
-				gitd = "git diff";
-				feh = "feh -.";
-			};
+			shellAliases = aliases;
 
 			localVariables = {
 				LESS = "-i -M -R -S -w -X -z-4";
@@ -142,6 +146,12 @@
 			initContent = ''
 				unalias rm
 			'';
+		};
+
+		bash = {
+			enable = true;
+
+			shellAliases = aliases;
 		};
 
 		neovim = {
@@ -322,7 +332,4 @@
 		package = pkgs.nix;
 		settings.experimental-features = [ "nix-command" "flakes" ];
 	};
-
-	# Let Home Manager install and manage itself.
-	programs.home-manager.enable = true;
 }
