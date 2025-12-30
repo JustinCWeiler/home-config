@@ -121,6 +121,9 @@
 					email = "justincweiler@gmail.com";
 					name = "Justin W";
 				};
+				init = {
+					defaultBranch = "main";
+				};
 			};
 		};
 
