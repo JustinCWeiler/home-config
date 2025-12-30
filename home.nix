@@ -7,6 +7,10 @@
 			"spotify"
 		];
 
+	nixpkgs.overlays = [
+		inputs.nixpkgs-wayland.overlay
+	];
+
 	home = rec {
 		# Home Manager needs a bit of information about you and the paths it should
 		# manage.
