@@ -182,6 +182,8 @@
             };
           };
 
+          haskell-tools.enable = true;
+
           cmp = {
             enable = true;
             autoEnableSources = true;
