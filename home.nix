@@ -170,14 +170,34 @@
         plugins = {
           nix.enable = true;
 
+          lsp = {
+            enable = true;
+
+            servers = {
+              rust_analyzer = {
+                enable = true;
+                installCargo = true;
+                installRustc = true;
+              };
+            };
+          };
+
           cmp = {
-            enable = false;
+            enable = true;
             autoEnableSources = true;
-            settings.sources = [
-              { name = "nvim_lsp"; }
-              { name = "path"; }
-              { name = "buffer"; }
-            ];
+            settings = {
+              sources = [
+                { name = "nvim_lsp"; }
+                { name = "path"; }
+                { name = "buffer"; }
+              ];
+
+              mapping = {
+                "<CR>" = "cmp.mapping.confirm({ select = true })";
+                "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+                "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+              };
+            };
           };
         };
 
