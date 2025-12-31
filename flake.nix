@@ -1,39 +1,39 @@
 {
-	description = "Home Manager configuration of justinw";
+  description = "Home Manager configuration of justinw";
 
-	inputs = {
-		# Specify the source of Home Manager and Nixpkgs.
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-		nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
-		home-manager = {
-			url = "github:nix-community/home-manager";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-		nixvim = {
-			url = "github:nix-community/nixvim";
-			inputs.nixpkgs.follows = "nixpkgs";
-		};
-	};
+  inputs = {
+    # Specify the source of Home Manager and Nixpkgs.
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 
-	outputs =
-		{ self, nixpkgs, nixpkgs-wayland, home-manager, nixvim } @ inputs:
-		let
-			system = "x86_64-linux";
-			pkgs = nixpkgs.legacyPackages.${system};
-		in
-		{
-			homeConfigurations."justinw" = home-manager.lib.homeManagerConfiguration {
-				inherit pkgs;
+  outputs =
+    { self, nixpkgs, nixpkgs-wayland, home-manager, nixvim } @ inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      homeConfigurations."justinw" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
 
-				# Specify your home configuration modules here, for example,
-				# the path to your home.nix.
-				modules = [ nixvim.homeModules.nixvim ./home.nix ];
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [ nixvim.homeModules.nixvim ./home.nix ];
 
-				# Optionally use extraSpecialArgs
-				# to pass through arguments to home.nix
-				extraSpecialArgs = {
-					inherit inputs;
-				};
-			};
-		};
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
+        extraSpecialArgs = {
+          inherit inputs;
+        };
+      };
+    };
 }
