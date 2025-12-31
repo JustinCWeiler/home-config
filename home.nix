@@ -201,37 +201,44 @@
           };
         };
 
-        extraConfigVim = ''
-          " no mouse control
-          set mouse=
-          set nowrap
-          " line numbers + relative line numbers
-          set nu rnu
+        keymaps = [
+          # use ; as :
+          {
+            action = ":";
+            key = ";";
+            mode = [ "n" "v" ];
+          }
 
-          " use ; as :
-          nnoremap ; :
-          vnoremap ; :
+          # scroll left and right
+          {
+            action = "20zh";
+            key = "<C-h>";
+            mode = [ "n" ];
+          }
+          {
+            action = "20zl";
+            key = "<C-l>";
+            mode = [ "n" ];
+          }
+        ];
 
-          nnoremap <C-l> 20zl
-          nnoremap <C-h> 20zh
+        opts = {
+          # line numbering
+          number = true;
+          relativenumber = true;
 
-          " restore cursor
-          augroup restore_cursor
-            " reset autocmds
-            autocmd!
-            autocmd BufReadPost * if line("'\"") <= line("$") | execute "normal! g`\"" | else | execute "normal! G" | endif
-          augroup END
+          # no mouse control
+          mouse = "";
 
-          " COC
-          " Make <CR> to accept selected completion item or notify coc.nvim to format
-          " <C-g>u breaks current undo, please make your own choice.
-          "inoremap <silent><expr> <C-CR> coc#pum#confirm()
-          "inoremap <silent><expr> <tab>   coc#pum#visible() ? coc#pum#next(1) : "\<tab>"
-          "inoremap <silent><expr> <s-tab> coc#pum#visible() ? coc#pum#prev(1) : "\<s-tab>"
+          wrap = false;
+        };
 
-          "nnoremap <silent><expr> <C-k> CocActionAsync('doHover')
-          "nmap <silent> <C-]> <Plug>(coc-definition)
-        '';
+        autoCmd = [
+          {
+            command = ''if line("'\"") <= line("$") | execute "normal! g`\"" | else | execute "normal! G" | endif '';
+            event = [ "BufReadPost" ];
+          }
+        ];
       })];
     };
   };
