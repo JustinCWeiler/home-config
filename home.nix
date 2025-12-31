@@ -161,68 +161,58 @@
 			shellAliases = aliases;
 		};
 
-		neovim = {
+		nixvim = {
 			enable = true;
-			defaultEditor = true;
+
 			vimAlias = true;
 
-			coc = {
-				enable = true;
-				settings = {
-					suggest = {
-						noselect = true;
-						enablePreview = true;
-						enablePreselect = false;
-						disableKind = true;
-					};
-					languageserver = {
-						haskell = {
-							command = "haskell-language-server-wrapper";
-							args = [ "--lsp" ];
-							rootPatterns = [
-								"*.cabal"
-								"stack.yaml"
-								"cabal.project"
-								"package.yaml"
-								"hie.yaml"
-							];
-							filetypes = [ "hs" "lhs" "haskell" "lhaskell" ];
-						};
+			imports = [({lib, ...}: {
+				plugins = {
+					nix.enable = true;
+
+					cmp = {
+						enable = false;
+						autoEnableSources = true;
+						settings.sources = [
+							{ name = "nvim_lsp"; }
+							{ name = "path"; }
+							{ name = "buffer"; }
+						];
 					};
 				};
-			};
 
-			extraConfig = ''
-				" no mouse control
-				set mouse=
-				set nowrap
-				" line numbers + relative line numbers
-				set nu rnu
+				extraConfigVim = ''
+					" no mouse control
+					set mouse=
+					set nowrap
+					" line numbers + relative line numbers
+					set nu rnu
 
-				" use ; as :
-				nnoremap ; :
-				vnoremap ; :
+					" use ; as :
+					nnoremap ; :
+					vnoremap ; :
 
-				nnoremap <C-l> 20zl
-				nnoremap <C-h> 20zh
+					nnoremap <C-l> 20zl
+					nnoremap <C-h> 20zh
 
-				" restore cursor
-				augroup restore_cursor
-					" reset autocmds
-					autocmd!
-					autocmd BufReadPost * if line("'\"") <= line("$") | execute "normal! g`\"" | else | execute "normal! G" | endif
-				augroup END
+					" restore cursor
+					augroup restore_cursor
+						" reset autocmds
+						autocmd!
+						autocmd BufReadPost * if line("'\"") <= line("$") | execute "normal! g`\"" | else | execute "normal! G" | endif
+					augroup END
 
-				" COC
-				" Make <CR> to accept selected completion item or notify coc.nvim to format
-				" <C-g>u breaks current undo, please make your own choice.
-				inoremap <silent><expr> <C-CR> coc#pum#confirm()
-				inoremap <silent><expr> <tab>   coc#pum#visible() ? coc#pum#next(1) : "\<tab>"
-				inoremap <silent><expr> <s-tab> coc#pum#visible() ? coc#pum#prev(1) : "\<s-tab>"
+					" COC
+					" Make <CR> to accept selected completion item or notify coc.nvim to format
+					" <C-g>u breaks current undo, please make your own choice.
+					"inoremap <silent><expr> <C-CR> coc#pum#confirm()
+					"inoremap <silent><expr> <tab>   coc#pum#visible() ? coc#pum#next(1) : "\<tab>"
+					"inoremap <silent><expr> <s-tab> coc#pum#visible() ? coc#pum#prev(1) : "\<s-tab>"
 
-				nnoremap <silent><expr> <C-k> CocActionAsync('doHover')
-				"nmap <silent> <C-]> <Plug>(coc-definition)
-			'';
+					"nnoremap <silent><expr> <C-k> CocActionAsync('doHover')
+					"nmap <silent> <C-]> <Plug>(coc-definition)
+				'';
+			})];
 		};
 	};
 
