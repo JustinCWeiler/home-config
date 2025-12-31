@@ -50,12 +50,8 @@
 			protonvpn-gui
 			vlc
 			#spotify
-			xev
-
-			haskellPackages.cabal-install
-			haskellPackages.ghc
-			haskellPackages.haskell-language-server
-			haskellPackages.implicit-hie
+			wev
+			xorg.xset
 		];
 
 		# Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -125,6 +121,10 @@
 					defaultBranch = "main";
 				};
 			};
+
+			ignores = [
+				"/result"
+			];
 		};
 
 		zsh = {
