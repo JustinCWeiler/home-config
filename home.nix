@@ -137,6 +137,10 @@
         LESS = "-i -M -R -S -w -X -z-4";
       };
 
+      sessionVariables = {
+        GIT_EDITOR = "vim";
+      };
+
       prezto = {
         enable = true;
 
