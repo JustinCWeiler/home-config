@@ -307,9 +307,13 @@
 
       startup = [
         { command = "protonvpn-app"; }
+        { command = "steam"; }
       ];
 
       assigns = {
+        "8" = [
+          { class = "steam"; }
+        ];
         "10" = [
           { app_id = "protonvpn-app"; }
           { app_id = "org.qbittorrent.qBittorrent"; }

@@ -152,11 +152,11 @@
         "nixpkgs-wayland": "nixpkgs-wayland"
       },
       "locked": {
-        "lastModified": 1767473334,
-        "narHash": "sha256-/fan/k0jZCYDEuSr0rF6r5q1D+xzZCwcpewnMdQ9R+o=",
+        "lastModified": 1767477126,
+        "narHash": "sha256-u0BtUvpoO2+dFyZFS19hqSDLuj+ccRf9UtvNvxJDKoc=",
         "owner": "JustinCWeiler",
         "repo": "nix-config",
-        "rev": "16e1c72c0d920d6e076cf020146f1d639194172a",
+        "rev": "0381010af18fd697a50954378781426ffb30255d",
         "type": "github"
       },
       "original": {
