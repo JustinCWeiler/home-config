@@ -13,10 +13,11 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-config.url = "github:JustinCWeiler/nix-config";
   };
 
   outputs =
-    { self, nixpkgs, nixpkgs-wayland, home-manager, nixvim } @ inputs:
+    { self, nixpkgs, home-manager, ... } @ inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -27,7 +28,7 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ nixvim.homeModules.nixvim ./home.nix ];
+        modules = [ inputs.nixvim.homeModules.nixvim ./home.nix ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix

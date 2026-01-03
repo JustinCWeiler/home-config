@@ -246,6 +246,12 @@
         ];
       })];
     };
+
+    lutris = {
+      enable = true;
+
+      steamPackage = inputs.nix-config.outputs.nixosConfigurations.yedevsky.config.programs.steam.package;
+    };
   };
 
   wayland.windowManager.sway = {
