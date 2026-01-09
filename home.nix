@@ -98,6 +98,8 @@
       gitl = "git log --oneline";
       gitd = "git diff";
       feh = "feh -.";
+      reboot = "systemctl reboot";
+      poweroff = "systemctl poweroff";
     };
   in {
     home-manager.enable = true;
