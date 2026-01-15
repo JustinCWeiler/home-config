@@ -52,6 +52,7 @@
       #spotify
       wev
       xorg.xset
+      calc
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -319,6 +320,7 @@
       assigns = {
         "8" = [
           { class = "steam"; }
+          { title = "Steam"; }
         ];
         "10" = [
           { app_id = "protonvpn-app"; }
@@ -358,6 +360,14 @@
 
         # tv
         "VIZIO, Inc D39h-D0 LAUAUIAR00000" = {
+          mode = "1920x1080@60.000Hz";
+          scale = "1.5";
+          scale_filter = "smart";
+          pos = "213 -720";
+        };
+
+        # tv 2
+        "Technical Concepts Ltd Fire TV Unknown" = {
           mode = "1920x1080@60.000Hz";
           scale = "1.5";
           scale_filter = "smart";
