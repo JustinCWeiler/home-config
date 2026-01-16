@@ -368,10 +368,11 @@
 
         # tv 2
         "Technical Concepts Ltd Fire TV Unknown" = {
-          mode = "1920x1080@60.000Hz";
-          scale = "1.5";
+          mode = "3840x2160@60.000Hz";
+          scale = "3";
           scale_filter = "smart";
           pos = "213 -720";
+          hdr = "on";
         };
       };
     };
