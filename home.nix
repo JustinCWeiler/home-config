@@ -70,6 +70,18 @@
       #'';
 
       ".nix".source = config.lib.file.mkOutOfStoreSymlink "${homeDirectory}/.config/home-manager/";
+      ".wallpaper".source = pkgs.fetchurl {
+        url = "https://archive.org/download/theoriginalfilesofsomewindowswallpapers/bliss%20600dpi.tif";
+        hash = "sha256-jyW25K4XB/lOR4UMEKfB19QqsuU3X1OPBAi1MmJes/g=";
+      };
+    };
+
+    pointerCursor = {
+      enable = true;
+      sway.enable = true;
+      name = "Hackneyed";
+      size = 24;
+      package = pkgs.hackneyed;
     };
 
     # Home Manager can also manage your environment variables through
@@ -268,6 +280,8 @@
       "--unsupported-gpu"
     ];
 
+    checkConfig = false;
+
     config = rec {
       modifier = "Mod4";
       up    = "k";
@@ -341,7 +355,9 @@
         };
       };
 
-      output = {
+      output = let
+        background = "~/.wallpaper fill";
+      in {
         ## xps 15 laptop monitor (root screen)
         #"eDP-1" = {
         #  mode = "3840x2160@59.997Hz";
@@ -356,6 +372,7 @@
           scale = "1.5";
           scale_filter = "smart";
           pos = "0 0";
+          inherit background;
         };
 
         # tv
@@ -364,6 +381,7 @@
           scale = "1.5";
           scale_filter = "smart";
           pos = "213 -720";
+          inherit background;
         };
 
         # tv 2
@@ -373,6 +391,7 @@
           scale_filter = "smart";
           pos = "213 -720";
           hdr = "on";
+          inherit background;
         };
       };
     };
