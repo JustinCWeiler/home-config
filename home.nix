@@ -1,8 +1,13 @@
-{ config, pkgs, lib, inputs, ... }:
-
 {
-
-  nixpkgs.config.allowUnfreePredicate = pkg:
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
+  nixpkgs.config.allowUnfreePredicate =
+    pkg:
     builtins.elem (lib.getName pkg) [
       "spotify"
     ];
@@ -103,175 +108,160 @@
   };
 
   programs =
-  let
-    aliases = {
-      ls = "ls --color=tty";
-      psa = "ps -ef";
-      gits = "git status";
-      gitl = "git log --oneline";
-      gitd = "git diff";
-      feh = "feh -.";
-      reboot = "systemctl reboot";
-      poweroff = "systemctl poweroff";
-    };
-  in {
-    home-manager.enable = true;
-    firefox.enable = true;
-    spotify-player.enable = true;
-    feh.enable = true;
+    let
+      aliases = {
+        ls = "ls --color=tty";
+        psa = "ps -ef";
+        gits = "git status";
+        gitl = "git log --oneline";
+        gitd = "git diff";
+        feh = "feh -.";
+        reboot = "systemctl reboot";
+        poweroff = "systemctl poweroff";
+      };
+    in
+    {
+      home-manager.enable = true;
+      firefox.enable = true;
+      spotify-player.enable = true;
+      feh.enable = true;
 
-    foot = {
-      enable = true;
-    };
-
-    git = {
-      enable = true;
-
-      settings = {
-        user = {
-          email = "justincweiler@gmail.com";
-          name = "Justin W";
-        };
-        init = {
-          defaultBranch = "main";
-        };
+      foot = {
+        enable = true;
       };
 
-      ignores = [
-        "/result"
-      ];
-    };
-
-    zsh = {
-      enable = true;
-      #zprof.enable = true;
-
-      shellAliases = aliases;
-
-      localVariables = {
-        LESS = "-i -M -R -S -w -X -z-4";
-      };
-
-      sessionVariables = {
-        GIT_EDITOR = "vim";
-      };
-
-      prezto = {
+      git = {
         enable = true;
 
-        editor.keymap = "vi";
+        settings = {
+          user = {
+            email = "justincweiler@gmail.com";
+            name = "Justin W";
+          };
+          init = {
+            defaultBranch = "main";
+          };
+        };
 
-        prompt.pwdLength = "long";
+        ignores = [
+          "/result"
+        ];
       };
 
-      autosuggestion.enable = true;
+      zsh = {
+        enable = true;
+        #zprof.enable = true;
 
-      # TODO fixme
-      historySubstringSearch.enable = true;
+        shellAliases = aliases;
 
-      initContent = ''
-        unalias rm
-      '';
-    };
+        localVariables = {
+          LESS = "-i -M -R -S -w -X -z-4";
+        };
 
-    bash = {
-      enable = true;
+        sessionVariables = {
+          GIT_EDITOR = "vim";
+        };
 
-      shellAliases = aliases;
-    };
+        prezto = {
+          enable = true;
 
-    nixvim = {
-      enable = true;
+          editor.keymap = "vi";
 
-      vimAlias = true;
+          prompt.pwdLength = "long";
+        };
 
-      imports = [({lib, ...}: {
-        plugins = {
-          nix.enable = true;
+        autosuggestion.enable = true;
+
+        # TODO fixme
+        historySubstringSearch.enable = true;
+
+        initContent = ''
+          unalias rm
+        '';
+      };
+
+      bash = {
+        enable = true;
+
+        shellAliases = aliases;
+      };
+
+      nvf = {
+        enable = true;
+
+        settings.vim = {
+          viAlias = false;
+          vimAlias = true;
+
+          lineNumberMode = "relNumber";
+
+          autocmds = [
+            {
+              enable = true;
+              event = [ "BufReadPost" ];
+              command = ''if line("'\"") <= line("$") | execute "normal! g`\"" | else | execute "normal! G" | endif'';
+            }
+          ];
+
+          keymaps = [
+            # use ; as :
+            {
+              key = ";";
+              action = ":";
+              mode = [
+                "n"
+                "v"
+              ];
+            }
+            # scroll left and right
+            {
+              key = "<C-h>";
+              action = "20zh";
+              mode = [ "n" ];
+            }
+            {
+              key = "<C-l>";
+              action = "20zl";
+              mode = [ "n" ];
+            }
+          ];
+
+          options = {
+            mouse = "";
+
+            wrap = false;
+
+            expandtab = false;
+          };
 
           lsp = {
             enable = true;
-
-            servers = {
-              rust_analyzer = {
-                enable = true;
-                installCargo = true;
-                installRustc = true;
-              };
-            };
+            formatOnSave = true;
           };
 
-          haskell-tools.enable = true;
+          languages = {
+            enableFormat = true;
+            enableExtraDiagnostics = true;
 
-          trouble.enable = true;
-          web-devicons.enable = true;
+            nix = {
+              enable = true;
 
-          cmp = {
-            enable = true;
-            autoEnableSources = true;
-            settings = {
-              sources = [
-                { name = "nvim_lsp"; }
-                { name = "path"; }
-                { name = "buffer"; }
-              ];
+              format.type = [ "nixfmt" ];
+            };
 
-              mapping = {
-                "<CR>" = "cmp.mapping.confirm({ select = true })";
-                "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
-                "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
-              };
+            haskell = {
+              enable = true;
             };
           };
         };
+      };
 
-        keymaps = [
-          # use ; as :
-          {
-            action = ":";
-            key = ";";
-            mode = [ "n" "v" ];
-          }
+      lutris = {
+        enable = true;
 
-          # scroll left and right
-          {
-            action = "20zh";
-            key = "<C-h>";
-            mode = [ "n" ];
-          }
-          {
-            action = "20zl";
-            key = "<C-l>";
-            mode = [ "n" ];
-          }
-        ];
-
-        opts = {
-          # line numbering
-          number = true;
-          relativenumber = true;
-
-          # no mouse control
-          mouse = "";
-
-          wrap = false;
-        };
-
-        autoCmd = [
-          {
-            command = ''if line("'\"") <= line("$") | execute "normal! g`\"" | else | execute "normal! G" | endif '';
-            event = [ "BufReadPost" ];
-          }
-        ];
-      })];
+        steamPackage = inputs.nix-config.outputs.nixosConfigurations.yedevsky.config.programs.steam.package;
+      };
     };
-
-    lutris = {
-      enable = true;
-
-      steamPackage = inputs.nix-config.outputs.nixosConfigurations.yedevsky.config.programs.steam.package;
-    };
-  };
 
   wayland.windowManager.sway = {
     enable = true;
@@ -284,9 +274,9 @@
 
     config = rec {
       modifier = "Mod4";
-      up    = "k";
-      down  = "j";
-      left  = "h";
+      up = "k";
+      down = "j";
+      left = "h";
       right = "l";
 
       terminal = "foot";
@@ -296,16 +286,16 @@
         "${modifier}+shift+f" = "exec firefox";
         "${modifier}+shift+p" = "exec firefox --private-window";
 
-        "${modifier}+shift+alt+${up}"    = "move workspace to up";
-        "${modifier}+shift+alt+${down}"  = "move workspace to down";
-        "${modifier}+shift+alt+${left}"  = "move workspace to left";
+        "${modifier}+shift+alt+${up}" = "move workspace to up";
+        "${modifier}+shift+alt+${down}" = "move workspace to down";
+        "${modifier}+shift+alt+${left}" = "move workspace to left";
         "${modifier}+shift+alt+${right}" = "move workspace to right";
 
-        "XF86AudioMute"        = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+        "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
 
-        "XF86MonBrightnessUp"   = "exec brightnessctl set 5%+";
+        "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
         "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
       };
 
@@ -355,45 +345,47 @@
         };
       };
 
-      output = let
-        background = "~/.wallpaper fill";
-      in {
-        ## xps 15 laptop monitor (root screen)
-        #"eDP-1" = {
-        #  mode = "3840x2160@59.997Hz";
-        #  scale = "2";
-        #  scale_filter = "nearest";
-        #  pos = "0 0";
-        #};
+      output =
+        let
+          background = "~/.wallpaper fill";
+        in
+        {
+          ## xps 15 laptop monitor (root screen)
+          #"eDP-1" = {
+          #  mode = "3840x2160@59.997Hz";
+          #  scale = "2";
+          #  scale_filter = "nearest";
+          #  pos = "0 0";
+          #};
 
-        # framework 16 laptop monitor (root screen)
-        "eDP-1" = {
-          mode = "2560x1600@165.000Hz";
-          scale = "1.5";
-          scale_filter = "smart";
-          pos = "0 0";
-          inherit background;
-        };
+          # framework 16 laptop monitor (root screen)
+          "eDP-1" = {
+            mode = "2560x1600@165.000Hz";
+            scale = "1.5";
+            scale_filter = "smart";
+            pos = "0 0";
+            inherit background;
+          };
 
-        # tv
-        "VIZIO, Inc D39h-D0 LAUAUIAR00000" = {
-          mode = "1920x1080@60.000Hz";
-          scale = "1.5";
-          scale_filter = "smart";
-          pos = "213 -720";
-          inherit background;
-        };
+          # tv
+          "VIZIO, Inc D39h-D0 LAUAUIAR00000" = {
+            mode = "1920x1080@60.000Hz";
+            scale = "1.5";
+            scale_filter = "smart";
+            pos = "213 -720";
+            inherit background;
+          };
 
-        # tv 2
-        "Technical Concepts Ltd Fire TV Unknown" = {
-          mode = "3840x2160@60.000Hz";
-          scale = "3";
-          scale_filter = "smart";
-          pos = "213 -720";
-          hdr = "on";
-          inherit background;
+          # tv 2
+          "Technical Concepts Ltd Fire TV Unknown" = {
+            mode = "3840x2160@60.000Hz";
+            scale = "3";
+            scale_filter = "smart";
+            pos = "213 -720";
+            hdr = "on";
+            inherit background;
+          };
         };
-      };
     };
   };
 
@@ -405,6 +397,9 @@
   # flakes
   nix = {
     package = pkgs.nix;
-    settings.experimental-features = [ "nix-command" "flakes" ];
+    settings.experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
   };
 }
