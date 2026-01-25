@@ -58,6 +58,7 @@
       wev
       xorg.xset
       calc
+      units
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
