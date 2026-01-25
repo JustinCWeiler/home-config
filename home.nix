@@ -367,17 +367,17 @@
             inherit background;
           };
 
-          # tv
-          "VIZIO, Inc D39h-D0 LAUAUIAR00000" = {
-            mode = "1920x1080@60.000Hz";
-            scale = "1.5";
-            scale_filter = "smart";
-            pos = "213 -720";
-            inherit background;
-          };
+          # old tv
+          #"DP-3" = {
+          #  mode = "1920x1080@60.000Hz";
+          #  scale = "1.5";
+          #  scale_filter = "smart";
+          #  pos = "213 -720";
+          #  inherit background;
+          #};
 
           # tv 2
-          "Technical Concepts Ltd Fire TV Unknown" = {
+          "DP-3" = {
             mode = "3840x2160@60.000Hz";
             scale = "3";
             scale_filter = "smart";
