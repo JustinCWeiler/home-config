@@ -59,6 +59,9 @@
       xorg.xset
       calc
       units
+
+      # fonts
+      font-awesome
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -262,6 +265,64 @@
 
         steamPackage = inputs.nix-config.outputs.nixosConfigurations.yedevsky.config.programs.steam.package;
       };
+
+      waybar = {
+        enable = true;
+
+        settings.bar = {
+          position = "bottom";
+
+          modules-left = [
+            "sway/workspaces"
+            "sway/mode"
+          ];
+
+          "sway/workspaces" = {
+            disable-scroll = true;
+          };
+
+          modules-right = [
+            "network"
+            "battery"
+            "pulseaudio"
+            "clock"
+          ];
+
+          "network" = {
+            interval = 1;
+            interface = "wlp191s0";
+            format = "{ipaddr}  {bandwidthDownBits}  {bandwidthUpBits}";
+          };
+
+          "battery" = {
+            format = "{capacity}% {icon}";
+            format-icons = [
+              ""
+              ""
+              ""
+              ""
+              ""
+            ];
+          };
+
+          "pulseaudio" = {
+            format = "{volume}% {icon}";
+            format-bluetooth = "{volume}% {icon}";
+            format-icons = {
+              default = "";
+              default-muted = "";
+              hdmi = "";
+            };
+            scroll-step = 0;
+            on-click = "pavucontrol";
+          };
+
+          "clock" = {
+            interval = 1;
+            format = "{:%F %H:%M:%S}";
+          };
+        };
+      };
     };
 
   wayland.windowManager.sway = {
@@ -283,6 +344,12 @@
       terminal = "foot";
       defaultWorkspace = "workspace number 1";
 
+      bars = [
+        {
+          command = "waybar";
+        }
+      ];
+
       keybindings = lib.mkOptionDefault {
         "${modifier}+shift+f" = "exec firefox";
         "${modifier}+shift+p" = "exec firefox --private-window";
@@ -299,19 +366,6 @@
         "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
         "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
       };
-
-      #bindswitches = let laptop = "eDP-1"; in {
-      #  "lid:on" = {
-      #    reload = true;
-      #    locked = true;
-      #    action = "output ${laptop} disable";
-      #  };
-      #  "lid:off" = {
-      #    reload = true;
-      #    locked = true;
-      #    action = "output ${laptop} enable";
-      #  };
-      #};
 
       seat."*" = {
         hide_cursor = "3000";
@@ -394,6 +448,8 @@
     spotifyd.enable = true;
     network-manager-applet.enable = true;
   };
+
+  fonts.fontconfig.enable = true;
 
   # flakes
   nix = {
