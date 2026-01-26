@@ -122,6 +122,7 @@
         feh = "feh -.";
         reboot = "systemctl reboot";
         poweroff = "systemctl poweroff";
+        npkg = "nix search --quiet nixpkgs";
       };
     in
     {
