@@ -290,7 +290,6 @@
           ];
 
           "network" = {
-            interval = 1;
             interface = "wlp191s0";
             format = "{ipaddr}  {bandwidthDownBits}  {bandwidthUpBits}";
           };
