@@ -442,6 +442,15 @@
             hdr = "on";
             inherit background;
           };
+
+          # monitor
+          "DP-4" = {
+            mode = "2560x1440@143.964Hz";
+            scale = "1";
+            scale_filter = "smart";
+            pos = "1707 -500";
+            inherit background;
+          };
         };
     };
   };
