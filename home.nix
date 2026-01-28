@@ -60,6 +60,8 @@
       calc
       units
 
+      kdePackages.okular
+
       # fonts
       font-awesome
     ];
