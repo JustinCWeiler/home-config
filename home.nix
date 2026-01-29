@@ -125,6 +125,7 @@
         reboot = "systemctl reboot";
         poweroff = "systemctl poweroff";
         npkg = "nix search --quiet nixpkgs";
+        roblox = "nvidia-offload flatpak run org.vinegarhq.Sober";
       };
     in
     {
