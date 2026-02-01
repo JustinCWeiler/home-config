@@ -260,6 +260,12 @@
             haskell = {
               enable = true;
             };
+
+            rust = {
+              enable = true;
+              format.enable = true;
+              extensions.crates-nvim.enable = true;
+            };
           };
         };
       };
