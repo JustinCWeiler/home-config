@@ -64,6 +64,11 @@
 
       # fonts
       font-awesome
+
+      (writeShellApplication {
+        name = "roblox";
+        text = "nvidia-offload flatpak run org.vinegarhq.Sober";
+      })
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -125,7 +130,6 @@
         reboot = "systemctl reboot";
         poweroff = "systemctl poweroff";
         npkg = "nix search --quiet nixpkgs";
-        roblox = "nvidia-offload flatpak run org.vinegarhq.Sober";
       };
     in
     {
