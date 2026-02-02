@@ -297,6 +297,7 @@
 
           modules-right = [
             "network"
+            "disk"
             "backlight"
             "temperature"
             "battery"
@@ -309,8 +310,17 @@
             format = "{ipaddr}  {bandwidthDownBits}  {bandwidthUpBits}";
           };
 
+          "disk" = {
+            format = "{free} ";
+          };
+
+          "backlight" = {
+            format = "{percent}% ";
+          };
+
           "battery" = {
             format = "{capacity}% {icon}";
+            full-at = 80;
             format-icons = [
               ""
               ""
