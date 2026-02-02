@@ -297,6 +297,8 @@
 
           modules-right = [
             "network"
+            "backlight"
+            "temperature"
             "battery"
             "pulseaudio"
             "clock"
