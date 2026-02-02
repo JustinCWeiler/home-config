@@ -59,6 +59,10 @@
       xorg.xset
       calc
       units
+      slurp
+      grim
+      pavucontrol
+      wl-clipboard
 
       kdePackages.okular
 
@@ -137,6 +141,7 @@
       firefox.enable = true;
       spotify-player.enable = true;
       feh.enable = true;
+      satty.enable = true;
 
       foot = {
         enable = true;
@@ -390,6 +395,9 @@
 
         "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
         "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+
+        "${modifier}+ctrl+shift+3" = "exec grim - | wl-copy";
+        "${modifier}+ctrl+shift+4" = "exec slurp | grim -g - - | wl-copy";
       };
 
       seat."*" = {
@@ -481,6 +489,7 @@
   services = {
     spotifyd.enable = true;
     network-manager-applet.enable = true;
+    mako.enable = true;
   };
 
   fonts.fontconfig.enable = true;
