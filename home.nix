@@ -320,7 +320,7 @@
           };
 
           "backlight" = {
-            format = "{percent}% ";
+            format = "{percent}% ";
           };
 
           "battery" = {
