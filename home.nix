@@ -500,6 +500,10 @@
     spotifyd.enable = true;
     network-manager-applet.enable = true;
     mako.enable = true;
+    gammastep = {
+      enable = true;
+      provider = "geoclue2";
+    };
   };
 
   fonts.fontconfig.enable = true;
