@@ -251,6 +251,16 @@
             expandtab = false;
           };
 
+          autocomplete.blink-cmp = {
+            enable = true;
+            setupOpts = {
+              completion.list.selection = {
+                preselect = false;
+                auto_insert = true;
+              };
+            };
+          };
+
           lsp = {
             enable = true;
             formatOnSave = true;
