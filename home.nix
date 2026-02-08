@@ -326,7 +326,7 @@
           };
 
           "disk" = {
-            format = "{free} ";
+            format = "{free} ";
           };
 
           "backlight" = {
