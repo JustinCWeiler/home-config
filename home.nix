@@ -340,6 +340,7 @@
           "network" = {
             interface = "wlp191s0";
             format = "{ipaddr}  {bandwidthDownBits}  {bandwidthUpBits}";
+            on-click = "foot nmtui";
           };
 
           "disk" = {
