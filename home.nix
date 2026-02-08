@@ -213,10 +213,27 @@
           lineNumberMode = "relNumber";
 
           autocmds = [
+            # go to last cursor pos in file on open
             {
               enable = true;
               event = [ "BufReadPost" ];
               command = ''if line("'\"") <= line("$") | execute "normal! g`\"" | else | execute "normal! G" | endif'';
+            }
+
+            # nix file settings
+            {
+              enable = true;
+              event = [ "BufEnter" ];
+              pattern = [ "*.nix" ];
+              command = "set expandtab shiftwidth=2 tabstop=2";
+            }
+
+            # haskell file settings
+            {
+              enable = true;
+              event = [ "BufEnter" ];
+              pattern = [ "*.hs" ];
+              command = "set expandtab shiftwidth=2 tabstop=2";
             }
           ];
 
