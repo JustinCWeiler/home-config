@@ -54,7 +54,7 @@
       qbittorrent
       protonvpn-gui
       vlc
-      #spotify
+      spotify
       wev
       xorg.xset
       calc
@@ -69,9 +69,15 @@
       # fonts
       font-awesome
 
+      # games
       (writeShellApplication {
         name = "roblox";
         text = "nvidia-offload flatpak run org.vinegarhq.Sober";
+      })
+      prismlauncher # minecraft
+      (writeShellApplication {
+        name = "nv-prismlauncher";
+        text = "nvidia-offload prismlauncher";
       })
     ];
 
@@ -424,6 +430,10 @@
         "XF86MonBrightnessUp" = "exec brightnessctl set 5%+";
         "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
 
+        "XF86AudioPrev" = "exec playerctl previous";
+        "XF86AudioPlay" = "exec playerctl play-pause";
+        "XF86AudioNext" = "exec playerctl next";
+
         "${modifier}+ctrl+shift+3" = "exec grim - | wl-copy";
         "${modifier}+ctrl+shift+4" = "exec slurp | grim -g - - | wl-copy";
       };
@@ -518,6 +528,8 @@
     spotifyd.enable = true;
     network-manager-applet.enable = true;
     mako.enable = true;
+    playerctld.enable = true;
+
     gammastep = {
       enable = true;
       provider = "geoclue2";
