@@ -458,7 +458,7 @@
           { title = "Steam"; }
         ];
         "10" = [
-          { app_id = "protonvpn-app"; }
+          { app_id = "proton.vpn.app.gtk"; }
           { app_id = "org.qbittorrent.qBittorrent"; }
         ];
       };
