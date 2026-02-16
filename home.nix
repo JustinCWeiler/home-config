@@ -6,11 +6,11 @@
   ...
 }:
 {
-  nixpkgs.config.allowUnfreePredicate =
-    pkg:
-    builtins.elem (lib.getName pkg) [
-      "spotify"
-    ];
+  #nixpkgs.config.allowUnfreePredicate =
+  #  pkg:
+  #  builtins.elem (lib.getName pkg) [
+  #    "spotify"
+  #  ];
 
   nixpkgs.overlays = [
     inputs.nixpkgs-wayland.overlay
@@ -54,7 +54,7 @@
       qbittorrent
       protonvpn-gui
       vlc
-      spotify
+      #spotify
       wev
       xorg.xset
       calc
@@ -386,6 +386,11 @@
             format = "{:%F %H:%M:%S}";
           };
         };
+      };
+
+      tmux = {
+        enable = true;
+        keyMode = "vi";
       };
     };
 
