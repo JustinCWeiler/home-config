@@ -474,6 +474,11 @@
           pointer_accel = "0";
           dwt = "false";
         };
+        "K06 BLE Keyboard" = {
+          natural_scroll = "enabled";
+          tap = "enabled";
+          tap_button_map = "lrm";
+        };
       };
 
       output =
