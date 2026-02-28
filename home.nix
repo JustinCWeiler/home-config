@@ -74,9 +74,10 @@
         name = "roblox";
         text = "nvidia-offload flatpak run org.vinegarhq.Sober";
       })
-      prismlauncher # minecraft
       (writeShellApplication {
-        name = "nv-prismlauncher";
+        # minecraft
+        name = "prismlauncher";
+        runtimeInputs = [ pkgs.prismlauncher ];
         text = "nvidia-offload prismlauncher";
       })
     ];
