@@ -179,7 +179,7 @@
         shellAliases = aliases;
 
         localVariables = {
-          LESS = "-i -M -R -S -w -X -z-4";
+          LESS = "-i -M -R -S -w -X";
         };
 
         sessionVariables = {
