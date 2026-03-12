@@ -500,7 +500,7 @@
             mode = "2560x1600@165.000Hz";
             scale = "1.5";
             scale_filter = "smart";
-            pos = "0 0";
+            pos = "0 720";
             inherit background;
           };
 
@@ -518,7 +518,7 @@
             mode = "3840x2160@60.000Hz";
             scale = "3";
             scale_filter = "smart";
-            pos = "213 -720";
+            pos = "213 0";
             hdr = "on";
             inherit background;
           };
@@ -528,7 +528,7 @@
             mode = "2560x1440@143.964Hz";
             scale = "1";
             scale_filter = "smart";
-            pos = "1707 -500";
+            pos = "1707 220";
             inherit background;
           };
         };
