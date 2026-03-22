@@ -520,6 +520,7 @@
             scale_filter = "smart";
             pos = "213 0";
             hdr = "on";
+            render_bit_depth = "10";
             inherit background;
           };
 
