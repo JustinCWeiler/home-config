@@ -442,6 +442,8 @@
 
         "${modifier}+ctrl+shift+3" = "exec grim - | wl-copy";
         "${modifier}+ctrl+shift+4" = "exec slurp | grim -g - - | wl-copy";
+
+        "${modifier}+shift+g" = "output DP-3 scale 1 pos 0 9999";
       };
 
       seat."*" = {
