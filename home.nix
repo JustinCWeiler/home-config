@@ -63,6 +63,7 @@
       grim
       pavucontrol
       wl-clipboard
+      tree
 
       kdePackages.okular
 
