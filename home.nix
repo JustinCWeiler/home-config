@@ -52,11 +52,11 @@
       #'')
       htop
       qbittorrent
-      protonvpn-gui
+      proton-vpn
       vlc
       #spotify
       wev
-      xorg.xset
+      xset
       calc
       units
       slurp
@@ -146,7 +146,10 @@
     in
     {
       home-manager.enable = true;
-      firefox.enable = true;
+      firefox = {
+        enable = true;
+        configPath = "${config.xdg.configHome}/mozilla/firefox";
+      };
       spotify-player.enable = true;
       feh.enable = true;
       satty.enable = true;

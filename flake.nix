@@ -24,7 +24,13 @@
     }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = nixpkgs.legacyPackages.${system}.extend (
+        _: prev: {
+          openldap = prev.openldap.overrideAttrs {
+            doCheck = !prev.stdenv.hostPlatform.isi686;
+          };
+        }
+      );
     in
     {
       homeConfigurations."justinw" = home-manager.lib.homeManagerConfiguration {
