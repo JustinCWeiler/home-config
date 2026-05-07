@@ -138,6 +138,7 @@
         psa = "ps -ef";
         gits = "git status";
         gitl = "git log --oneline";
+        gitla = "git log --oneline --all --graph";
         gitd = "git diff";
         feh = "feh -.";
         reboot = "systemctl reboot";
