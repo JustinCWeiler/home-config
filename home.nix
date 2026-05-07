@@ -64,6 +64,7 @@
       pavucontrol
       wl-clipboard
       tree
+      libreoffice
 
       kdePackages.okular
 
