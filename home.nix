@@ -166,7 +166,7 @@
         settings = {
           user = {
             email = "justincweiler@gmail.com";
-            name = "Justin W";
+            name = "Justin Weiler";
           };
           init = {
             defaultBranch = "main";
