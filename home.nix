@@ -553,6 +553,11 @@
     gammastep = {
       enable = true;
       provider = "geoclue2";
+      settings = {
+        wayland = {
+          output = "*DP-[!3]";
+        };
+      };
     };
   };
 
