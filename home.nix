@@ -449,7 +449,7 @@
         "${modifier}+ctrl+shift+3" = "exec grim - | wl-copy";
         "${modifier}+ctrl+shift+4" = "exec slurp | grim -g - - | wl-copy";
 
-        "${modifier}+shift+g" = "output DP-3 scale 1 pos 0 1787";
+        "${modifier}+shift+g" = "exec systemctl --user restart gammastep";
       };
 
       seat."*" = {
@@ -508,7 +508,7 @@
             mode = "2560x1600@165.000Hz";
             scale = "1.5";
             scale_filter = "smart";
-            pos = "0 720";
+            pos = "1067 2160";
             inherit background;
           };
 
@@ -524,9 +524,9 @@
           # tv 2
           "DP-3" = {
             mode = "3840x2160@60.000Hz";
-            scale = "3";
+            scale = "1";
             scale_filter = "smart";
-            pos = "213 0";
+            pos = "0 0";
             hdr = "on";
             render_bit_depth = "10";
             inherit background;
@@ -537,7 +537,7 @@
             mode = "2560x1440@143.964Hz";
             scale = "1";
             scale_filter = "smart";
-            pos = "1707 220";
+            pos = "2774 1660"; # +1707 -500 from eDP-1@1.5
             inherit background;
           };
         };
