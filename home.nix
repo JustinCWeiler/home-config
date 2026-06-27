@@ -82,6 +82,10 @@
         runtimeInputs = [ pkgs.prismlauncher ];
         text = "nvidia-offload prismlauncher";
       })
+      (writeShellApplication {
+        name = "screenshot";
+        text = "slurp | grim -g -";
+      })
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
