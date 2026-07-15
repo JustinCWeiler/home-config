@@ -526,7 +526,7 @@
           #};
 
           # tv 2
-          "DP-3" = {
+          "DP-2" = {
             mode = "3840x2160@60.000Hz";
             scale = "1";
             scale_filter = "smart";
@@ -559,7 +559,7 @@
       provider = "geoclue2";
       settings = {
         wayland = {
-          output = "*DP-[!3]";
+          output = "*DP-[!2]";
         };
       };
     };
