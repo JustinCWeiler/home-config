@@ -319,6 +319,11 @@
               format.enable = true;
               extensions.crates-nvim.enable = true;
             };
+
+            clang = {
+              enable = true;
+              format.enable = false;
+            };
           };
         };
       };
