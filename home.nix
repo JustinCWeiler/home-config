@@ -65,6 +65,7 @@
       wl-clipboard
       tree
       libreoffice
+      gimp-with-plugins
 
       kdePackages.okular
 
