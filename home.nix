@@ -66,6 +66,7 @@
       tree
       libreoffice
       gimp-with-plugins
+      screen
 
       kdePackages.okular
 
@@ -497,6 +498,11 @@
           natural_scroll = "enabled";
           tap = "enabled";
           tap_button_map = "lrm";
+        };
+        "1133:49305:Logitech_G502_X" = {
+          natural_scroll = "disabled";
+          accel_profile = "flat";
+          pointer_accel = "-0.1";
         };
       };
 
