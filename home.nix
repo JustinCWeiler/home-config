@@ -446,6 +446,8 @@
         "${modifier}+shift+alt+${left}" = "move workspace to left";
         "${modifier}+shift+alt+${right}" = "move workspace to right";
 
+        "${modifier}+shift+r" = ''exec "swaymsg output eDP-1 disable ; swaymsg output eDP-1 enable"'';
+
         "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
@@ -458,7 +460,11 @@
         "XF86AudioNext" = "exec playerctl next";
 
         "${modifier}+ctrl+shift+3" = "exec grim - | wl-copy";
+        "${modifier}+ctrl+alt+3" =
+          ''exec grim ~/media/pictures/screenshots/`date "+%Y-%m-%d_%H:%M:%S.png"`'';
         "${modifier}+ctrl+shift+4" = "exec slurp | grim -g - - | wl-copy";
+        "${modifier}+ctrl+alt+4" =
+          ''exec slurp | grim -g - ~/media/pictures/screenshots/`date "+%Y-%m-%d_%H:%M:%S.png"`'';
 
         "${modifier}+shift+g" = "exec systemctl --user restart gammastep";
       };
