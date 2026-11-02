@@ -53,7 +53,7 @@
       htop
       qbittorrent
       proton-vpn
-      vlc
+      #vlc
       #spotify
       wev
       xset
@@ -141,6 +141,9 @@
     let
       aliases = {
         ls = "ls --color=tty";
+        l = "ls";
+        ll = "ls -l";
+        la = "ls -la";
         psa = "ps -ef";
         gits = "git status";
         gitl = "git log --oneline";
@@ -409,6 +412,18 @@
       tmux = {
         enable = true;
         keyMode = "vi";
+      };
+
+      mpv = {
+        enable = true;
+        bindings = {
+          "RIGHT" = "seek 10 exact";
+          "LEFT" = "seek -10 exact";
+          "Shift+RIGHT" = "seek 5 exact";
+          "Shift+LEFT" = "seek -5 exact";
+          "Alt+RIGHT" = "seek 85 exact";
+          "Alt+LEFT" = "seek -85 exact";
+        };
       };
     };
 
