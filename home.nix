@@ -464,6 +464,8 @@
 
         "${modifier}+shift+r" = ''exec "swaymsg output eDP-1 disable ; swaymsg output eDP-1 enable"'';
 
+        "${modifier}+shift+x" = "exec swaylock";
+
         "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
         "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
         "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
