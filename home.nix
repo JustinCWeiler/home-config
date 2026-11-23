@@ -67,6 +67,7 @@
       libreoffice
       gimp-with-plugins
       screen
+      anki
 
       kdePackages.okular
 
