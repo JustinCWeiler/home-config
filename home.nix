@@ -462,7 +462,7 @@
         "${modifier}+shift+alt+${left}" = "move workspace to left";
         "${modifier}+shift+alt+${right}" = "move workspace to right";
 
-        "${modifier}+shift+r" = ''exec "swaymsg output eDP-1 disable ; swaymsg output eDP-1 enable"'';
+        "${modifier}+shift+r" = ''exec "swaymsg output eDP-1 toggle"'';
 
         "${modifier}+shift+x" = "exec swaylock";
 
