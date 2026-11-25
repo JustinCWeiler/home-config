@@ -39,7 +39,7 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
-          inputs.nvf.homeManagerModules.default
+          inputs.nvf.homeModules.default
           ./home.nix
         ];
 
